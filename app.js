@@ -6,6 +6,9 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+const bodyParser = require('body-parser');
+const ContactosController = require('./controllers/contactosController');
+
 
 var app = express();
 
@@ -21,6 +24,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// Ruta para manejar el formulario de contacto
+app.post('/contacto', (req, res) => ContactosController.add(req, res));
+
+// Ruta de confirmación
+app.get('/confirmacion', (req, res) => res.render('confirmacion', { mensaje: '¡Formulario enviado exitosamente!' }));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
