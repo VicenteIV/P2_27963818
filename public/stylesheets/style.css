@@ -981,12 +981,11 @@ header {
     position: fixed;
     top: 0;
     right: 0;
-    width: 30rem;
-    height: 100vh;
+    width: 10rem;
+    height: 18vh;
     background-color: #66BB6A;
     z-index: 2;
     flex-direction: column;
-    transform: translateX(40rem);
     transition: transform 0.3s ease-in-out;
     grid-gap: 2.5rem;
   }
@@ -1146,28 +1145,80 @@ header {
 }
 
 @media screen and (max-width: 360px) {
-  /*Invest Section*/
   .invest__body {
     grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
   }
-  /*End Invest Section*/
-  /*How Is Works*/
+
   .progressbar__step {
     width: 4rem;
     height: 4rem;
   }
-  /*End How Is Works*/
-  /*Testimonials */
+
   .testimonial__profile {
     flex-direction: column;
     text-align: center;
   }
-  /*End Testimonials*/
-  /*Farm Invest*/
+
   .btn__farm--invest {
     width: 80%;
     min-width: initial;
   }
-  /*End Farm Invest*/
 }
-/*# sourceMappingURL=main.css.map */
+        /* Estilo básico para el modal */
+        .modal {
+          display: none;
+          position: fixed;
+          z-index: 9999;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          overflow: auto;
+          background-color: rgba(0, 0, 0, 0.5);
+      }
+      .modal-content {
+          background-color: #fff;
+          margin: 10% auto;
+          padding: 20px;
+          border-radius: 8px;
+          width: 30%;
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      }
+      .close {
+          color: #aaa;
+          float: right;
+          font-size: 28px;
+          font-weight: bold;
+      }
+      .close:hover,
+      .close:focus {
+          color: black;
+          text-decoration: none;
+          cursor: pointer;
+      }
+      input,textarea {
+        border: 2px solid red;
+        border-radius: 4px;
+        width: 100%;
+        padding: 6px 10px;
+
+      }
+
+      .areas{
+        margin-top: 1%;
+      }
+
+      /* Ajuste para pantallas más pequeñas */
+      @media (max-width: 768px) {
+        .modal-content {
+            width: 80%; /* Ocupa más espacio en pantallas pequeñas */
+            margin: 20% auto; /* Ajusta el margen para centrar mejor */
+        }
+      }
+
+      @media (max-width: 480px) {
+        .modal-content {
+            width: 90%; /* Ocupa casi todo el ancho */
+            padding: 15px; /* Ajusta el padding para pantallas más pequeñas */
+        }
+      }

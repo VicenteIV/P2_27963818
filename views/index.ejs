@@ -19,7 +19,6 @@
                     <img src="../images/ico.png" alt="Logo">
                 </div>
                 <div class="header__nav__content">
-                    <div class="nav-close-icon"></div>
                     <ul class="header__menu">
                         <li class="menu__item">
                             <a href="#" class="menu__link active">Home</a>
@@ -28,17 +27,10 @@
                             <a href="#" class="menu__link">Producto</a>
                         </li>
                         <li class="menu__item">
-                            <a href="#" class="menu__link">Contacto</a>
+                            <a href="#" class="menu__link" id="openModal">Contacto</a>
                         </li>
                     </ul>
-                    <div class="header__signup">
-                        <a href="#" class="btn btn__signup">
-                            <i class="fas fa-user-plus"></i> Registrarse
-                        </a>
-                    </div>
                 </div>
-
-
             </nav>
         </header>
 
@@ -46,16 +38,79 @@
             <div class="hero__content">
                 <div class="hero__text">
                     <h1 class="hero__title">Servicio de mudanzas y domicilios</h1>
-                    <p class="hero__description">
-                        Te llevamos tu encomienda a cualquier parte del pais
-                    </p>
-                    <a href="#" class="btn btn__hero">Contactanos</a>
+                    <p class="hero__description">Te llevamos tu encomienda a cualquier parte del país</p>
+                    <a href="#" class="btn btn__hero" id="openModal">Contáctanos</a>
                 </div>
                 <div class="hero__img">
                     <img height="430px" src="../images/mov.jpg" alt="">
                 </div>
             </div>
         </section>
+
+        <!-- Modal de contacto -->
+        <div id="contactModal" class="modal">
+            <div class="modal-content" id="modalContent">
+                <span class="close" id="closeModal">&times;</span>
+                <h2>Formulario de Contacto</h2>
+                <form id="contactForm">
+                    <div class="areas">
+                        <label for="nombre">Nombre<br></label>
+                        <input type="text" id="nombre" name="nombre" required>
+                    </div>
+                    <div class="areas">
+                        <label for="email">Correo Electrónico<br></label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="areas">
+                        <label for="comentario">Comentario<br></label>
+                        <textarea id="comentario" name="comentario" rows="4" required></textarea>
+                    </div>
+                    <button class="btn btn__hero" style="padding: 5px 10px;" type="submit">Enviar</button>
+                </form>
+            </div>
+        </div>
+        
+        <script>
+            document.getElementById('openModal').onclick = function() {
+                document.getElementById('contactModal').style.display = 'block';
+            }
+            document.getElementById('closeModal').onclick = function() {
+                document.getElementById('contactModal').style.display = 'none';
+            }
+            window.onclick = function(event) {
+                if (event.target == document.getElementById('contactModal')) {
+                    document.getElementById('contactModal').style.display = 'none';
+                }
+            }
+        
+            // Manejar el envío del formulario con Fetch API
+            document.getElementById('contactForm').addEventListener('submit', async function(event) {
+                event.preventDefault();  // Evita que el formulario se envíe de manera tradicional
+                
+                const formData = new FormData(this);
+                const data = Object.fromEntries(formData.entries());
+        
+                try {
+                    const response = await fetch('/contacto', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(data)
+                    });
+        
+                    if (response.ok) {
+                        document.getElementById('modalContent').innerHTML = `<p>¡Formulario enviado exitosamente!</p>`;
+                    } else {
+                        document.getElementById('modalContent').innerHTML = `<p>Error al enviar el formulario. Inténtalo de nuevo.</p>`;
+                    }
+                } catch (error) {
+                    document.getElementById('modalContent').innerHTML = `<p>Error de conexión. Inténtalo más tarde.</p>`;
+                    console.error('Error:', error);
+                }
+            });
+        </script>
+        
 
 
 
