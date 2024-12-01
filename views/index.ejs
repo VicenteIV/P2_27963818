@@ -27,7 +27,7 @@
                             <a href="#" class="menu__link">Producto</a>
                         </li>
                         <li class="menu__item">
-                            <a href="#" class="menu__link" id="openModal">Contacto</a>
+                            <a href="#" class="menu__link open-modal">Contacto</a>
                         </li>
                     </ul>
                 </div>
@@ -39,7 +39,7 @@
                 <div class="hero__text">
                     <h1 class="hero__title">Servicio de mudanzas y domicilios</h1>
                     <p class="hero__description">Te llevamos tu encomienda a cualquier parte del país</p>
-                    <a href="#" class="btn btn__hero" id="openModal">Contáctanos</a>
+                    <a href="#" class="btn btn__hero open-modal">Contáctanos</a>
                 </div>
                 <div class="hero__img">
                     <img height="430px" src="../images/mov.jpg" alt="">
@@ -71,9 +71,12 @@
         </div>
         
         <script>
-            document.getElementById('openModal').onclick = function() {
-                document.getElementById('contactModal').style.display = 'block';
-            }
+                        document.querySelectorAll('.open-modal').forEach(button => {
+                button.onclick = function() {
+                    document.getElementById('contactModal').style.display = 'block';
+                }
+            });
+
             document.getElementById('closeModal').onclick = function() {
                 document.getElementById('contactModal').style.display = 'none';
             }
