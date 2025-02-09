@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Open Graph -->
+    <meta property="og:title" content="<%= ogTitle %>" />
+    <meta property="og:description" content="<%= ogDescription %>" />
+    <title>Contactos</title>
+    <link rel="icon" type="image/png" href="../images/ico.png">
+
+    
+  </head>
+  <body>
+    <div class="contactos-container">
+      <header class="contactos-header">
+        <h1>Lista de Contactos</h1>
+        <input type="text" id="search" placeholder="Buscar por nombre o email">
+      </header>
+      <main class="contactos-main">
+            <!-- Botón de cerrar sesión -->
+    <div class="logout-container" style="text-align: right; margin-bottom: 15px;">
+      <form action="/auth/logout" method="GET" style="display: inline;">
+        <button type="submit" style="
+          padding: 10px 20px; 
+          background-color: #ff4d4d; 
+          color: white; 
+          border: none; 
+          border-radius: 5px; 
+          cursor: pointer;
+        ">
+          Cerrar Sesión
+        </button>
+        <table class="contactos-table">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Email</th>
+              <th>Comentario</th>
+              <th>IP</th>
+              <th>Fecha y Hora</th>
+            </tr>
+          </thead>
+          <tbody id="contactos-table">
+            <% contactos.forEach(contacto => { %>
+              <tr>
+                <td><%= contacto.nombre %></td>
+                <td><%= contacto.email %></td>
+                <td><%= contacto.comentario %></td>
+                <td><%= contacto.ip %></td>
+                <td><%= contacto.fecha_hora %></td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </main>
+    </div>
+    <style>
+      /* Estilos específicos para esta página */
+      .contactos-container {
+        font-family: Arial, sans-serif;
+        background-color: #f9f9f9;
+        color: #333;
+        margin: 0;
+        padding: 20px;
+      }
+
+      .contactos-header {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .contactos-header h1 {
+        font-size: 2rem;
+        margin: 0;
+        color: #66bb6a;
+      }
+
+      .contactos-header input {
+        margin-top: 10px;
+        padding: 10px;
+        width: 60%;
+        max-width: 400px;
+        font-size: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      .contactos-main {
+        overflow-x: auto;
+      }
+
+      .contactos-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        background-color: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        overflow: hidden;
+      }
+
+      .contactos-table thead {
+        background-color: #66bb6a;
+        color: white;
+      }
+
+      .contactos-table th,
+      .contactos-table td {
+        padding: 12px 15px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+
+      .contactos-table tr:hover {
+        background-color: #8ab14b;
+      }
+
+      .contactos-table th {
+        text-transform: uppercase;
+        font-size: 0.9rem;
+      }
+
+      .contactos-table td {
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 768px) {
+        .contactos-header input {
+          width: 90%;
+        }
+
+        .contactos-table th,
+        .contactos-table td {
+          font-size: 0.8rem;
+          padding: 8px;
+        }
+      }
+    </style>
+    <script>
+      const searchInput = document.getElementById("search");
+      const tableRows = document.querySelectorAll("#contactos-table tr");
+
+      searchInput.addEventListener("input", () => {
+        const filter = searchInput.value.toLowerCase();
+        tableRows.forEach(row => {
+          const name = row.cells[0].textContent.toLowerCase();
+          const email = row.cells[1].textContent.toLowerCase();
+          row.style.display = name.includes(filter) || email.includes(filter) ? "" : "none";
+        });
+      });
+    </script>
+  </body>
+</html>

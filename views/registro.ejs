@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro de Usuario</title>
+  <link rel="icon" type="image/png" href="../images/ico.png">
+
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+    <main>
+  <div class="register-container" style="text-align: center; font-family: 'Poppins';">
+    <h1>Crear una Cuenta</h1>
+    <form action="/registro" method="POST" style="margin-bottom: 20px;">
+      <label for="username" style="display: block; margin-bottom: 10px;">Usuario</label>
+      <input type="text" id="username" name="username" required style="padding: 10px; margin-bottom: 15px; width: 80%; max-width: 300px;">
+
+      <label for="password" style="display: block; margin-bottom: 10px;">Contraseña</label>
+      <input type="password" id="password" name="password" required style="padding: 10px; margin-bottom: 20px; width: 80%; max-width: 300px;">
+      <br>
+
+      <button type="submit" style="padding: 10px 20px; background-color: #28a745; color: white; border: none; cursor: pointer; border-radius: 5px;">
+        Registrarse
+      </button>
+    </form>
+
+    <p>¿Ya tienes una cuenta? <a href="/login" style="color: #007bff; text-decoration: none;">Inicia sesión aquí</a>.</p>
+  </div>
+  </main>
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 0;
+    }
+
+    main {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: calc(100vh - 80px);
+      padding: 20px;
+      margin-top: 1vh;
+    }
+
+    .login-container {
+      background-color: #ffffff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 40px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .login-container h1 {
+      font-size: 1.8rem;
+      color: #333333;
+      margin-bottom: 20px;
+    }
+
+    .login-container form {
+      margin-bottom: 20px;
+    }
+
+    .login-container label {
+      display: block;
+      font-weight: 400;
+      color: #555555;
+      margin-bottom: 8px;
+      text-align: left;
+    }
+
+    .login-container input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 1.4rem;
+    }
+
+    .login-container input:focus {
+      outline: none;
+      border-color: #888888;
+      box-shadow: 0 0 5px rgba(136, 136, 136, 0.5);
+    }
+
+    .login-container button {
+      width: 100%;
+      padding: 12px;
+      background-color: #28a745;
+      color: #ffffff;
+      font-size: 2rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .login-container button:hover {
+      background-color: #218838;
+    }
+
+    .login-container p {
+      margin: 20px 0 10px;
+      font-size: 0.9rem;
+      color: #777777;
+    }
+
+    .login-container a {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #ff5722;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 1.6rem;
+    }
+
+    .login-container a:hover {
+      background-color: #e64a19;
+    }
+  </style>
+</body>
+</html>

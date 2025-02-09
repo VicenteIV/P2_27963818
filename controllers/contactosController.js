@@ -13,7 +13,6 @@ class ContactosController {
 
             await ContactosModel.insertarContacto({ nombre, email, comentario, ip });
 
-            res.redirect('/confirmacion'); // Página de confirmación
         } catch (err) {
             console.error('Error al insertar contacto:', err);
             res.status(500).send('Error interno del servidor.');
